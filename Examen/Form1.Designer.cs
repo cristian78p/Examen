@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtNombreProducto = new System.Windows.Forms.TextBox();
+            this.btnAgregarProducto = new System.Windows.Forms.Button();
+            this.txtPrecioProducto = new System.Windows.Forms.TextBox();
+            this.txtCantidadStock = new System.Windows.Forms.TextBox();
+            this.listBoxInventario = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,12 +41,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtCantidadVenta = new System.Windows.Forms.TextBox();
+            this.txtProductoSeleccionado = new System.Windows.Forms.TextBox();
+            this.btnVenderProducto = new System.Windows.Forms.Button();
+            this.txtBuscarProducto = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxInventario)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,43 +59,43 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre del Producto";
             // 
-            // textBox1
+            // txtNombreProducto
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 237);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtNombreProducto.Location = new System.Drawing.Point(15, 237);
+            this.txtNombreProducto.Name = "txtNombreProducto";
+            this.txtNombreProducto.Size = new System.Drawing.Size(200, 20);
+            this.txtNombreProducto.TabIndex = 1;
             // 
-            // button1
+            // btnAgregarProducto
             // 
-            this.button1.Location = new System.Drawing.Point(15, 383);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 39);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Agregar producto";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAgregarProducto.Location = new System.Drawing.Point(15, 383);
+            this.btnAgregarProducto.Name = "btnAgregarProducto";
+            this.btnAgregarProducto.Size = new System.Drawing.Size(140, 39);
+            this.btnAgregarProducto.TabIndex = 2;
+            this.btnAgregarProducto.Text = "Agregar producto";
+            this.btnAgregarProducto.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // txtPrecioProducto
             // 
-            this.textBox2.Location = new System.Drawing.Point(15, 288);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtPrecioProducto.Location = new System.Drawing.Point(15, 288);
+            this.txtPrecioProducto.Name = "txtPrecioProducto";
+            this.txtPrecioProducto.Size = new System.Drawing.Size(200, 20);
+            this.txtPrecioProducto.TabIndex = 5;
             // 
-            // textBox3
+            // txtCantidadStock
             // 
-            this.textBox3.Location = new System.Drawing.Point(15, 339);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 20);
-            this.textBox3.TabIndex = 6;
+            this.txtCantidadStock.Location = new System.Drawing.Point(15, 339);
+            this.txtCantidadStock.Name = "txtCantidadStock";
+            this.txtCantidadStock.Size = new System.Drawing.Size(200, 20);
+            this.txtCantidadStock.TabIndex = 6;
             // 
-            // dataGridView1
+            // listBoxInventario
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(265, 131);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(390, 413);
-            this.dataGridView1.TabIndex = 14;
+            this.listBoxInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listBoxInventario.Location = new System.Drawing.Point(265, 131);
+            this.listBoxInventario.Name = "listBoxInventario";
+            this.listBoxInventario.Size = new System.Drawing.Size(390, 413);
+            this.listBoxInventario.TabIndex = 14;
             // 
             // label7
             // 
@@ -167,35 +167,36 @@
             this.label6.TabIndex = 25;
             this.label6.Text = "Producto seleccionado";
             // 
-            // textBox4
+            // txtCantidadVenta
             // 
-            this.textBox4.Location = new System.Drawing.Point(690, 339);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(200, 20);
-            this.textBox4.TabIndex = 24;
+            this.txtCantidadVenta.Location = new System.Drawing.Point(690, 339);
+            this.txtCantidadVenta.Name = "txtCantidadVenta";
+            this.txtCantidadVenta.Size = new System.Drawing.Size(200, 20);
+            this.txtCantidadVenta.TabIndex = 24;
             // 
-            // textBox5
+            // txtProductoSeleccionado
             // 
-            this.textBox5.Location = new System.Drawing.Point(690, 288);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(200, 20);
-            this.textBox5.TabIndex = 23;
+            this.txtProductoSeleccionado.Location = new System.Drawing.Point(690, 288);
+            this.txtProductoSeleccionado.Name = "txtProductoSeleccionado";
+            this.txtProductoSeleccionado.Size = new System.Drawing.Size(200, 20);
+            this.txtProductoSeleccionado.TabIndex = 23;
+            this.txtProductoSeleccionado.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // button2
+            // btnVenderProducto
             // 
-            this.button2.Location = new System.Drawing.Point(690, 383);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 39);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Vender Producto";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnVenderProducto.Location = new System.Drawing.Point(690, 383);
+            this.btnVenderProducto.Name = "btnVenderProducto";
+            this.btnVenderProducto.Size = new System.Drawing.Size(140, 39);
+            this.btnVenderProducto.TabIndex = 22;
+            this.btnVenderProducto.Text = "Vender Producto";
+            this.btnVenderProducto.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // txtBuscarProducto
             // 
-            this.textBox6.Location = new System.Drawing.Point(265, 94);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(390, 20);
-            this.textBox6.TabIndex = 21;
+            this.txtBuscarProducto.Location = new System.Drawing.Point(265, 94);
+            this.txtBuscarProducto.Name = "txtBuscarProducto";
+            this.txtBuscarProducto.Size = new System.Drawing.Size(390, 20);
+            this.txtBuscarProducto.TabIndex = 21;
             // 
             // label9
             // 
@@ -214,25 +215,25 @@
             this.ClientSize = new System.Drawing.Size(956, 577);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtCantidadVenta);
+            this.Controls.Add(this.txtProductoSeleccionado);
+            this.Controls.Add(this.btnVenderProducto);
+            this.Controls.Add(this.txtBuscarProducto);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.listBoxInventario);
+            this.Controls.Add(this.txtCantidadStock);
+            this.Controls.Add(this.txtPrecioProducto);
+            this.Controls.Add(this.btnAgregarProducto);
+            this.Controls.Add(this.txtNombreProducto);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxInventario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,11 +242,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtNombreProducto;
+        private System.Windows.Forms.Button btnAgregarProducto;
+        private System.Windows.Forms.TextBox txtPrecioProducto;
+        private System.Windows.Forms.TextBox txtCantidadStock;
+        private System.Windows.Forms.DataGridView listBoxInventario;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
@@ -253,10 +254,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtCantidadVenta;
+        private System.Windows.Forms.TextBox txtProductoSeleccionado;
+        private System.Windows.Forms.Button btnVenderProducto;
+        private System.Windows.Forms.TextBox txtBuscarProducto;
         private System.Windows.Forms.Label label9;
     }
 }
