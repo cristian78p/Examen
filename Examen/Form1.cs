@@ -151,9 +151,10 @@ namespace Examen
                 producto.Cantidad -= cantidadVenta;
 
                 ActualizarInventario();
+                MessageBox.Show("Venta realizada exitosamente.", "Éxito");
                 limpiarVenderProducto();
 
-                MessageBox.Show("Venta realizada exitosamente.", "Éxito");
+
             }
             catch(FormatException)
             {
