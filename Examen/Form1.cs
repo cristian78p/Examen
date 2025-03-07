@@ -34,6 +34,12 @@ namespace Examen
                     return;
                 }
 
+                if (string.IsNullOrWhiteSpace(txtPrecioProducto.Text))
+                {
+                    MessageBox.Show("El precio del producto no puede estar vacío.", "Error");
+                    return;
+                }
+
                 if (string.IsNullOrWhiteSpace(txtCantidadStock.Text))
                 {
                     MessageBox.Show("La cantidad en stock no puede estar vacía.", "Error");
@@ -51,7 +57,30 @@ namespace Examen
                     MessageBox.Show("La cantidad debe ser un número entero válido y mayor o igual a 0.", "Error");
                     return;
                 }
+                Producto productoExistente = productos.Find(p => p.Nombre.Equals(txtNombreProducto.Text, StringComparison.OrdinalIgnoreCase));
 
+                if (productoExistente != null)
+                {
+                    
+                    productoExistente.Cantidad += cantidad;
+
+                    if (productoExistente.Precio != precio)
+                    {
+                        DialogResult resultado = MessageBox.Show(
+                            $"El producto '{productoExistente.Nombre}' ya existe con un precio diferente ({productoExistente.Precio:C}). ¿Desea actualizar el precio al nuevo valor ({precio:C})?",
+                            "Confirmar cambio de precio",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question);
+
+                        if (resultado == DialogResult.Yes)
+                        {
+                            productoExistente.Precio = precio; 
+                        }
+                    }
+                }
+                else
+                {
+                    
                     Producto nuevoProducto = new Producto(txtNombreProducto.Text, precio, cantidad);
                     productos.Add(nuevoProducto);
                 }
@@ -86,43 +115,55 @@ namespace Examen
 
         private void btnVenderProducto_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtProductoSeleccionado.Text))
+            try
             {
-                MessageBox.Show("Debe seleccionar un producto a vender.", "Error");
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(txtProductoSeleccionado.Text))
+                {
+                    MessageBox.Show("Debe seleccionar un producto a vender.", "Error");
+                    return;
+                }
 
-            if (string.IsNullOrWhiteSpace(txtCantidadVenta.Text))
+                if (string.IsNullOrWhiteSpace(txtCantidadVenta.Text))
+                {
+                    MessageBox.Show("La cantidad a vender no puede estar vacía.", "Error");
+                    return;
+                }
+
+                if (!int.TryParse(txtCantidadVenta.Text, out int cantidadVenta) || cantidadVenta <= 0)
+                {
+                    MessageBox.Show("La cantidad a vender debe ser un número entero mayor a 0.", "Error");
+                    return;
+                }
+
+                Producto producto = productos.Find(p => p.Nombre.Equals(txtProductoSeleccionado.Text, StringComparison.OrdinalIgnoreCase));
+                if (producto == null)
+                {
+                    MessageBox.Show("El producto no se encuentra en el inventario.", "Error");
+                    return;
+                }
+
+                if (producto.Cantidad < cantidadVenta)
+                {
+                    MessageBox.Show("No hay suficiente stock para realizar la venta.", "Error");
+                    return;
+                }
+
+                producto.Cantidad -= cantidadVenta;
+
+                ActualizarInventario();
+                limpiarVenderProducto();
+
+                MessageBox.Show("Venta realizada exitosamente.", "Éxito");
+            }
+            catch(FormatException)
             {
-                MessageBox.Show("La cantidad a vender no puede estar vacía.", "Error");
-                return;
+                MessageBox.Show("ingrese datos validos");
             }
-
-            if (!int.TryParse(txtCantidadVenta.Text, out int cantidadVenta) || cantidadVenta <= 0)
+            catch (Exception ex)
             {
-                MessageBox.Show("La cantidad a vender debe ser un número entero mayor a 0.", "Error");
-                return;
+                MessageBox.Show(ex.Message);
             }
-
-            Producto producto = productos.Find(p => p.Nombre.Equals(txtProductoSeleccionado.Text, StringComparison.OrdinalIgnoreCase));
-            if (producto == null)
-            {
-                MessageBox.Show("El producto no se encuentra en el inventario.", "Error");
-                return;
-            }
-
-            if (producto.Cantidad < cantidadVenta)
-            {
-                MessageBox.Show("No hay suficiente stock para realizar la venta.", "Error");
-                return;
-            }
-
-            producto.Cantidad -= cantidadVenta;
-
-            ActualizarInventario();
-            limpiarVenderProducto();    
-
-            MessageBox.Show("Venta realizada exitosamente.", "Éxito");
+           
         }
         private void limpiarAgrProducto()
         {
