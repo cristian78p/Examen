@@ -34,12 +34,6 @@ namespace Examen
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(txtPrecioProducto.Text))
-                {
-                    MessageBox.Show("El precio del producto no puede estar vacío.", "Error");
-                    return;
-                }
-
                 if (string.IsNullOrWhiteSpace(txtCantidadStock.Text))
                 {
                     MessageBox.Show("La cantidad en stock no puede estar vacía.", "Error");
@@ -57,8 +51,10 @@ namespace Examen
                     MessageBox.Show("La cantidad debe ser un número entero válido y mayor o igual a 0.", "Error");
                     return;
                 }
-                Producto producto = new Producto(txtNombreProducto.Text,precio,cantidad);
-                productos.Add(producto);
+
+                    Producto nuevoProducto = new Producto(txtNombreProducto.Text, precio, cantidad);
+                    productos.Add(nuevoProducto);
+                }
                 ActualizarInventario();
                 MessageBox.Show("Producto agregado exitosamente.", "Éxito");
                 limpiarAgrProducto();
@@ -155,7 +151,7 @@ namespace Examen
                 listBoxInventario.DataSource = null;
                 listBoxInventario.DataSource = productosFiltrados;
             }
-
+            listBoxInventario.Columns["Precio"].DefaultCellStyle.Format = "C";
         }
 
     }
